@@ -37,18 +37,34 @@ export default function Features() {
 
         {/* Feature Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {features.map((feature, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 text-center flex flex-col items-center justify-center"
-            >
-              {feature.icon}
-              <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-              <p className="text-gray-600 text-sm">{feature.description}</p>
+          {features.map((feature, index) => {
+        const content = (
+          <div
+            className="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 text-center flex flex-col items-center justify-center cursor-pointer"
+          >
+            {feature.icon}
+            <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+            <p className="text-gray-600 text-sm">{feature.description}</p>
+          </div>
+        );
+
+        return feature.title === 'Prescription Manager' ? (
+          <a
+            key={index}
+            href="https://pager-rx.onrender.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {content}
+          </a>
+        ) : (
+          <div key={index}>
+            {content}
+          </div>
+        );
+      })}
+              </div>
             </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
+          </section>
+        );
+      }
